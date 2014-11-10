@@ -2,6 +2,8 @@
 
 > Import build info from CI systems
 
+This intial version is only slightly modified from [Gregg Cainus codecov.io module](https://github.com/cainus/codecov.io)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 

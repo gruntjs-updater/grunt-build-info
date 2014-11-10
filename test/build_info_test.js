@@ -1,48 +1,40 @@
-'use strict';
+var getConfiguration = require("../lib/services");
+var expect = require("expect.js");
 
-var grunt = require('grunt');
+describe("getConfiguration", function(){
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
+  it ("can get a token passed via env variable (uppercase)", function(){
+    process.env.TRAVIS = "true";
+    process.env.TRAVIS_JOB_ID = '1234';
+    process.env.TRAVIS_COMMIT = '5678';
+    process.env.TRAVIS_JOB_NUMBER = '91011';
+    process.env.TRAVIS_BRANCH = 'master';
+    process.env.CODECOV_TOKEN = 'asdf-asdf-asdf-asdf';
+    expect(getConfiguration()).to.eql({
+      service : 'travis',
+      buildId :  '1234',
+      commitId : '5678',
+      build : '91011',
+      branch : 'master',
+      token : 'asdf-asdf-asdf-asdf'
+    });
+  });
+  it ("can get a token passed via env variable (lowercase)", function(){
+    process.env.TRAVIS = "true";
+    process.env.TRAVIS_JOB_ID = '1234';
+    process.env.TRAVIS_COMMIT = '5678';
+    process.env.TRAVIS_JOB_NUMBER = '91011';
+    process.env.TRAVIS_BRANCH = 'master';
+    process.env.codecov_token = 'asdf-asdf-asdf-asdf';
+    expect(getConfiguration()).to.eql({
+      service : 'travis',
+      buildId :  '1234',
+      commitId : '5678',
+      build : '91011',
+      branch : 'master',
+      token : 'asdf-asdf-asdf-asdf'
+    });
+  });
 
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
-
-exports.build_info = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
-  default_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
-
-    test.done();
-  },
-  custom_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-    test.done();
-  },
-};
+});
+console.log("BUILD_INFO", global["BUILD_INFO"]);
