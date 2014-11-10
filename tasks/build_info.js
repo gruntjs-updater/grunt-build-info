@@ -9,8 +9,7 @@
 'use strict';
 var getConfiguration = require("../lib/services");
 var merge = require('merge');
-
-module.exports = function(grunt) {
+function registerTasks(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
@@ -33,4 +32,12 @@ module.exports = function(grunt) {
     global["BUILD_INFO"]=merge(options, getConfiguration());
   });
 
+}
+
+module.exports = function(grunt){
+  if(grunt){
+    registerTasks(grunt);
+  }else{
+    return getConfiguration;
+  }
 };
