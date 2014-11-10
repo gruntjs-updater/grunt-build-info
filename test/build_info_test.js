@@ -1,6 +1,6 @@
 var getConfiguration = require("../lib/services");
 var expect = require("expect.js");
-
+/*global describe, it */
 describe("getConfiguration", function(){
 
   it ("can get a token passed via env variable (uppercase)", function(){

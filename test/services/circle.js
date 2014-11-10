@@ -1,3 +1,4 @@
+/*global describe, it */
 var travis = require("../../lib/services/circle");
 var expect = require("expect.js");
 

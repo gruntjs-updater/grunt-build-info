@@ -1,3 +1,4 @@
+/*global describe, it */
 var jenkins = require("../../lib/services/jenkins");
 var expect = require("expect.js");
 
@@ -8,7 +9,7 @@ describe("jenkins service", function(){
 
     jenkins.detect(function(detected){
       expect(detected).to.be(true);
-    })
+    });
   });
 
   it ("can get service env info", function(){

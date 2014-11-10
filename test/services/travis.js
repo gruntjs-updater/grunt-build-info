@@ -1,3 +1,4 @@
+/*global describe, it */
 var travis = require("../../lib/services/travis");
 var expect = require("expect.js");
 
@@ -23,7 +24,7 @@ describe("travis service", function(){
         build : '91011',
         branch : 'master'
       });
-    })
+    });
   });
   it ("can get travis env info with a pull request", function(){
     process.env.TRAVIS = "true";
@@ -42,7 +43,7 @@ describe("travis service", function(){
         branch : 'master',
         pullRequest : 'blah',
       });
-    })
+    });
   });
 
 });
