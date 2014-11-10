@@ -9,14 +9,12 @@ describe("getConfiguration", function(){
     process.env.TRAVIS_COMMIT = '5678';
     process.env.TRAVIS_JOB_NUMBER = '91011';
     process.env.TRAVIS_BRANCH = 'master';
-    process.env.CODECOV_TOKEN = 'asdf-asdf-asdf-asdf';
     expect(getConfiguration()).to.eql({
       service : 'travis',
       buildId :  '1234',
       commitId : '5678',
       build : '91011',
-      branch : 'master',
-      token : 'asdf-asdf-asdf-asdf'
+      branch : 'master'
     });
   });
   it ("can get a token passed via env variable (lowercase)", function(){
@@ -25,14 +23,12 @@ describe("getConfiguration", function(){
     process.env.TRAVIS_COMMIT = '5678';
     process.env.TRAVIS_JOB_NUMBER = '91011';
     process.env.TRAVIS_BRANCH = 'master';
-    process.env.codecov_token = 'asdf-asdf-asdf-asdf';
     expect(getConfiguration()).to.eql({
       service : 'travis',
       buildId :  '1234',
       commitId : '5678',
       build : '91011',
-      branch : 'master',
-      token : 'asdf-asdf-asdf-asdf'
+      branch : 'master'
     });
   });
 
