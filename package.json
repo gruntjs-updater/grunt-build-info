@@ -3,6 +3,7 @@
   "description": "Import build info from CI systems",
   "version": "0.1.0",
   "homepage": "https://github.com/r3b/grunt-build-info",
+  "main": "tasks/build_info.js",
   "author": {
     "name": "ryan bridges",
     "email": "ryan@fasterness.com",

@@ -38,6 +38,6 @@ module.exports = function(grunt){
   if(grunt){
     registerTasks(grunt);
   }else{
-    return getConfiguration;
+    return getConfiguration();
   }
 };
